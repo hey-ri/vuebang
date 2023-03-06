@@ -6,7 +6,7 @@ const menus = ['Home', 'Product', 'About'];
 
 <template>
   <ul>
-    <li v-for="menu in menus" :key="menu">{{ menu }}</li>
+    <li v-for="(menu, idx) in menus" :key="idx">{{ menu }}</li>
   </ul>
   <img src="/vite.svg" class="logo" alt="Vite logo" />
   <div></div>
