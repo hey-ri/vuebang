@@ -1,24 +1,9 @@
 <script setup>
 import { ref } from 'vue';
-
-const products = ['역삼동원룸', '천호동원룸', '마포구원룸'];
-const price = ['50만원', '60만원', '70만원'];
-const data = [
-  {
-    products: '역삼동원룸',
-    price: '50만원',
-  },
-  {
-    products: '천호동원룸',
-    price: '60만원',
-  },
-  {
-    products: '마포구원룸',
-    price: '70만원',
-  },
-];
+import data from './data';
 
 const menus = ['Home', 'Product', 'About'];
+const product = data;
 
 const count = ref([0, 0, 0]);
 const onClick = () => {
@@ -41,11 +26,11 @@ const isModal = ref(false);
     </div>
   </div>
 
-  <div v-for="(item, index) in data" :key="index">
-    <img src="./assets/vue.svg" alt="사진" class="room-img" />
-    <strong style="display: block" @click="isModal = true">{{ item.products }}</strong>
-    <p>{{ item.price }}</p>
-    <button @click="count[0]++">허위매물 신고 버튼</button> <span>신고수 : {{ count[0] }}</span>
+  <div>
+    <img :src="product[0].image" alt="사진" class="room-img" />
+
+    <strong style="display: block" @click="isModal = true">{{ product[0].title }}</strong>
+    <p>{{ product[0].price }}원</p>
   </div>
 </template>
 
