@@ -26,11 +26,11 @@ const isModal = ref(false);
     </div>
   </div>
 
-  <div>
-    <img :src="product[0].image" alt="사진" class="room-img" />
+  <div v-for="(data, index) in product" :key="index">
+    <img :src="data.image" alt="사진" class="room-img" />
 
-    <strong style="display: block" @click="isModal = true">{{ product[0].title }}</strong>
-    <p>{{ product[0].price }}원</p>
+    <strong style="display: block" @click="isModal = true">{{ data.title }}</strong>
+    <p>{{ data.price }}원</p>
   </div>
 </template>
 
