@@ -10,6 +10,8 @@ const count = ref([0, 0, 0]);
 const onClick = () => {
   count.value++;
 };
+
+const isModal = ref(false);
 </script>
 
 <template>
@@ -17,16 +19,17 @@ const onClick = () => {
     <li v-for="(menu, idx) in menus" :key="idx">{{ menu }}</li>
   </ul>
 
-  <div class="black-bg">
+  <div class="black-bg" v-if="isModal === true">
     <div class="white-bg">
       <h3>상세 페이지</h3>
       <p>내용</p>
+      <button @click="isModal = false">닫기</button>
     </div>
   </div>
 
   <div>
     <img src="./assets/vue.svg" alt="사진" class="room-img" />
-    <strong style="display: block">{{ products[0] }}</strong>
+    <strong style="display: block" @click="isModal = true">{{ products[0] }}</strong>
     <p>{{ price[0] }}</p>
     <button @click="count[0]++">허위매물 신고 버튼</button> <span>신고수 : {{ count[0] }}</span>
   </div>
