@@ -3,6 +3,20 @@ import { ref } from 'vue';
 
 const products = ['역삼동원룸', '천호동원룸', '마포구원룸'];
 const price = ['50만원', '60만원', '70만원'];
+const data = [
+  {
+    products: '역삼동원룸',
+    price: '50만원',
+  },
+  {
+    products: '천호동원룸',
+    price: '60만원',
+  },
+  {
+    products: '마포구원룸',
+    price: '70만원',
+  },
+];
 
 const menus = ['Home', 'Product', 'About'];
 
@@ -27,25 +41,11 @@ const isModal = ref(false);
     </div>
   </div>
 
-  <div>
+  <div v-for="(item, index) in data" :key="index">
     <img src="./assets/vue.svg" alt="사진" class="room-img" />
-    <strong style="display: block" @click="isModal = true">{{ products[0] }}</strong>
-    <p>{{ price[0] }}</p>
+    <strong style="display: block" @click="isModal = true">{{ item.products }}</strong>
+    <p>{{ item.price }}</p>
     <button @click="count[0]++">허위매물 신고 버튼</button> <span>신고수 : {{ count[0] }}</span>
-  </div>
-
-  <div>
-    <img src="./assets/vue.svg" alt="사진" class="room-img" />
-    <strong style="display: block">{{ products[1] }}</strong>
-    <p>{{ price[1] }}</p>
-    <button @click="count[1]++">허위매물 신고 버튼</button> <span>신고수 : {{ count[1] }}</span>
-  </div>
-
-  <div>
-    <img src="./assets/vue.svg" alt="사진" class="room-img" />
-    <strong style="display: block">{{ products[2] }}</strong>
-    <p>{{ price[2] }}</p>
-    <button @click="count[2]++">허위매물 신고 버튼</button> <span>신고수 : {{ count[2] }}</span>
   </div>
 </template>
 
